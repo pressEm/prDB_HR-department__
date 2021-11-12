@@ -1,0 +1,32 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+{{ super() }}
+
+<form id="nubexForm" action="{{url_for('add_employee')}}" method="post" class="form-contact">
+    <p><label>Имя: </label> <input type="text" name="name" value="" requied/>
+    <p><label>Фамилия: </label> <input type="text" name="surname" value="" requied/>
+    <p><label>Email: </label> <input type="text" name="email" value="" requied/>
+    <p><label>Адрес проживания: </label> <input type="text" name="home_address" value="" requied/>
+        <!--    <p><label>URL статьи: </label> <input type="text" name="url" value="" requied />-->
+
+    <div>
+        <p><label>Выбор должности: </label>
+            <select name="selectPosts" size="1">
+                {% for p in posts %}
+                <option>{{p.code}} {{p.title}} {{p.Duties}}</option>
+                {% endfor %}
+            </select>
+    </div>
+    <div>
+        <p><label>Выбор офиса работы: </label>
+            <select name="selectOffices" size="1">
+                {% for o in offices %}
+                <option>{{o.code}} {{o.address}} {{o.phone_number}}</option>
+                {% endfor %}
+            </select>
+    </div>
+    <p><input type="submit" value="Добавить"/>
+</form>
+
+{% endblock%}

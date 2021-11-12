@@ -1,0 +1,23 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+{{ super() }}
+<!--<ul class="mainmenu">-->
+<!--    <li><a href="{{url_for('add_employee')}}">Добавить сотрудника</a></li>-->
+<!--    <li><a href="{{url_for('employee_del')}}">Удалить сотрудника</a></li></ul>-->
+
+
+<div class="lists">
+<form action="{{url_for('delete_employee')}}" method="post" class="form-contact">
+<p><label>Удалить сотрудника по id: </label> <input type="text" name="id" value="" requied />
+    <p><input type="submit" value="Удалить" />
+</form>
+</div>
+<h1>Список работников</h1>
+<div class="lists">
+
+{% for e in empl %}
+<p>{{e.id}} {{e.name}} {{e.surname}}</p>
+{% endfor %}
+</div>
+{% endblock%}

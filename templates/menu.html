@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='style.css')}}" rel="stylesheet"/>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+{% block mainmenu -%}
+<ul class="mainmenu">
+    <li><a href="{{url_for('show_employees')}}">Показать сотрудников</a></li>
+    <li><a href="{{url_for('show_offices')}}">Показать офисы</a></li>
+    <li><a href="{{url_for('show_posts')}}">Показать должности</a></li>
+</ul>
+{% endblock mainmenu -%}
+<!--    <div class="clear"></div>-->
+{% endblock %}
+
+</body>
+</html>

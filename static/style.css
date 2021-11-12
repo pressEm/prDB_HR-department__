@@ -1,0 +1,44 @@
+html, body {
+	font-family: 'Arial';
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+a {
+	color: #0059b2;
+	text-decoration: none;
+}
+a:hover {
+	color: #CC0000;
+	text-decoration: underline;
+}
+
+.clear {clear: both;}
+
+ul.mainmenu {
+	padding: 0;
+    list-style: none;
+    background: #f2f2f2;
+}
+ul.mainmenu li {
+	 display: inline-block;
+}
+ul.mainmenu li.last {float: right;}
+
+ul.mainmenu li a {
+	 display: block;
+        padding: 10px 25px;
+        color: #333;
+        text-decoration: none;
+}
+ul.mainmenu li a:hover {
+	 color: #fff;
+        background: #939393;
+}
+div.lists{
+        background-color: #f2f2f2;
+        width: 50%;
+
+}

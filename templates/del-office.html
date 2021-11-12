@@ -1,0 +1,23 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+{{ super() }}
+<!--<ul class="mainmenu">-->
+<!--    <li><a href="{{url_for('add_office')}}">Добавить офис</a></li>-->
+<!--        <li><a href="{{url_for('office_del')}}">Удалить офис</a></li></ul>-->
+
+<div class="lists">
+<form action="{{url_for('delete_office')}}" method="post" class="form-contact">
+    <p><label>Удалить офис по id: </label> <input type="text" name="code" value="" requied/>
+    <p><input type="submit" value="Удалить"/>
+</form>
+</div>
+
+<h1>Список офисов</h1>
+<div class="lists">
+
+    {% for o in offices %}
+    <p>{{o.code}} {{o.address}} {{o.phone_number}}</p>
+    {% endfor %}
+</div>
+{% endblock%}

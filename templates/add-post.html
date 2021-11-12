@@ -1,0 +1,11 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+{{ super() }}
+
+<form action="{{url_for('add_post')}}" method="post" class="form-contact">
+<p><label>Наименование должности: </label> <input type="text" name="title" value="" requied />
+    <p><label>Обязанности: </label> <input type="text" name="duties" value="" requied />
+    <p><input type="submit" value="Добавить" />
+</form>
+{% endblock%}
