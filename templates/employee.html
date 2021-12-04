@@ -4,15 +4,11 @@
 {{ super() }}
 <ul class="mainmenu">
     <li><a href="{{url_for('add_employee')}}">Добавить сотрудника</a></li>
-    <li><a href="{{url_for('employee_del')}}">Удалить сотрудника</a></li></ul>
-
-
-
+    </ul>
 <h1>Список работников</h1>
 <div class="lists">
-
 {% for e in empl %}
-<p><a href="{{ url_for('show_employee', empl_id=e.id)}}">{{e.id}} {{e.name}} {{e.surname}}</a></p>
+<p><a href="{{ url_for('show_employee', empl_id=e.id)}}">{{e.name}} {{e.surname}}</a></p>
 {% endfor %}
 </div>
 {% endblock%}

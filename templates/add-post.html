@@ -2,6 +2,7 @@
 
 {% block content %}
 {{ super() }}
+<h1>Добавление должности</h1>
 
 <form action="{{url_for('add_post')}}" method="post" class="form-contact">
 <p><label>Наименование должности: </label> <input type="text" name="title" value="" requied />

@@ -2,6 +2,7 @@
 
 {% block content %}
 {{ super() }}
+<h1>Добавление офиса</h1>
 
 <form action="{{url_for('add_office')}}" method="post" class="form-contact">
 <p><label>Адрес: </label> <input type="text" name="address" value="" requied />

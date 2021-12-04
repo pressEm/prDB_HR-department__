@@ -2,12 +2,16 @@
 
 {% block content %}
 {{ super() }}
+
+<h1>Редактирование информации о сотруднике</h1>
 <form id="nubexForm" action="{{url_for('show_employee', empl_id=empl.id)}}" method="post" class="form-contact">
     <p><label>Имя: </label> <input type="text" name="name" value="{{ empl.name }}" requied/>
     <p><label>Фамилия: </label> <input type="text" name="surname" value="{{ empl.surname }}" requied/>
     <p><label>Email: </label> <input type="text" name="email" value="{{ empl.email }}" requied/>
     <p><label>Адрес проживания: </label> <input type="text" name="home_address" value="{{ empl.home_address }}" requied/>
-    <p><input type="submit" value="Подтвердить изменение данных"/>
+    <p><input type="submit" value="Подтвердить изменение данных"/></p>
 </form>
-
+<form id = "deletion" action="{{ url_for('delete_employee', id=empl.id) }}" method="post">
+ 				 <p><input type="submit" value="Удалить сотрудника" /></p>
+</form>
 {% endblock%}

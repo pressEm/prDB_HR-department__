@@ -2,18 +2,22 @@
 
 {% block content %}
 {{ super() }}
-<h1>Добавление сотрудника</h1>
-
-<form id="nubexForm" action="{{url_for('add_employee')}}" method="post" class="form-contact">
+{% if res|length > 1 %}
+<h1>Список выбранных работников</h1>
+{% endif %}
+<div class="lists">
+{% for r in res %}
+<p><a href="{{ url_for('show_employee', empl_id=r.id)}}">{{r.name}} {{r.surname}}</a></p>
+{% endfor %}
+</div>
+<h2>Задайте критерии поиска</h2>
+<form id="nubexForm" action="{{url_for('show_employees_search')}}" method="post" class="form-contact">
     <p><label>Имя: </label> <input type="text" name="name" value="" requied/>
     <p><label>Фамилия: </label> <input type="text" name="surname" value="" requied/>
-    <p><label>Email: </label> <input type="text" name="email" value="" requied/>
-    <p><label>Адрес проживания: </label> <input type="text" name="home_address" value="" requied/>
-        <!--    <p><label>URL статьи: </label> <input type="text" name="url" value="" requied />-->
-
     <div>
         <p><label>Выбор должности: </label>
             <select name="selectPosts" size="1">
+                <option value="null">...</option>
                 {% for p in posts %}
                 <option  value="{{p.code}}">{{p.code}} {{p.title}} {{p.Duties}}</option>
                 {% endfor %}
@@ -22,12 +26,22 @@
     <div>
         <p><label>Выбор офиса работы: </label>
             <select name="selectOffices" size="1">
+                <option value="null">...</option>
                 {% for o in offices %}
                 <option value="{{o.code}}">{{o.code}} {{o.address}} {{o.phone_number}}</option>
                 {% endfor %}
             </select>
     </div>
-    <p><input type="submit" value="Добавить"/>
+    <p><input type="submit" value="Поиск"/>
 </form>
 
+<!--<ul class="mainmenu">-->
+<!--    <li><a href="{{url_for('add_employee')}}">По офису</a></li>-->
+<!--    </ul>-->
+<h3>Список всех работников</h3>
+<div class="lists">
+{% for e in empl %}
+<p><a href="{{ url_for('show_employee', empl_id=e.id)}}">{{e.name}} {{e.surname}}</a></p>
+{% endfor %}
+</div>
 {% endblock%}

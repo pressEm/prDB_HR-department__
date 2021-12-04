@@ -1,0 +1,25 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+{{ super() }}
+
+<ul class="mainmenu">
+    <li><a href="{{url_for('add_post')}}">Добавить должность</a></li>
+</ul>
+
+<h1>Список постов!</h1>
+<div class="lists">
+    {% for p in posts %}
+    <p class="title"><a href="{{ url_for('show_posts_2', id=p.code)}}">{{p.title}} {{p.Duties}}</a>
+    </p>
+    {% if code == p.code%}
+    <div>
+        {% for e in empl %}
+
+        <p><a href="{{ url_for('show_employee', empl_id=e.id)}}">{{e.name}} {{e.surname}}</a></p>
+        {% endfor %}
+    </div>
+    {%endif%}
+    {% endfor %}
+</div>
+{% endblock%}

@@ -5,20 +5,17 @@
 
 <ul class="mainmenu">
     <li><a href="{{url_for('add_post')}}">Добавить должность</a></li>
-            <li><a href="{{url_for('post_del')}}">Удалить должность</a></li>
-
 </ul>
 
-<!--<div class="lists">-->
-<!--<form action="{{url_for('delete_post')}}" method="post" class="form-contact">-->
-<!--    <p><label>Удалить должность по id: </label> <input type="text" name="code" value="" requied/>-->
-<!--    <p><input type="submit" value="Удалить"/>-->
-<!--</form>-->
-<!--</div>-->
 <h1>Список постов</h1>
 <div class="lists">
         {% for p in posts %}
-        <p>{{p.code}} {{p.title}} {{p.Duties}}</p>
+
+    <p class="title"><a href="{{ url_for('show_posts_2', id=p.code)}}">{{p.title}} {{p.Duties}}</a></p>
+        {% for r in records %}
+            {% if r.post_code == p.code %}
+            {% endif %}
+        {% endfor %}
         {% endfor %}
 </div>
 {% endblock%}

@@ -21,7 +21,9 @@ class FDataBase:
             print("Ошибка получения из БД" + str(e))
         return False
 
-    def get_emplyee(self, id):
+    def get_employee(self, id):
+        print("get_employee")
+        print(id)
         try:
             self.__cur.execute(
                 f"SELECT * FROM employee where id == :id", (id,))
@@ -54,6 +56,44 @@ class FDataBase:
         except sqlite3.Error as e:
             print("Ошибка получения из БД" + str(e))
         return False
+
+    def get_all_records(self):
+        try:
+            self.__cur.execute(
+                f"SELECT * FROM work_record")
+            res = self.__cur.fetchall()
+            if res:
+                return res
+        except sqlite3.Error as e:
+            print("Ошибка получения из БД" + str(e))
+        return False
+
+    def get_records_by_office(self, id):
+        print(id)
+        try:
+            self.__cur.execute(
+                f"SELECT * FROM work_record where office_code==:id", (id,))
+            res = self.__cur.fetchall()
+            print(len(res))
+            if res:
+                return res
+        except sqlite3.Error as e:
+            print("Ошибка получения из БД" + str(e))
+        return False
+
+    def get_records_by_post(self, id):
+        print(id)
+        try:
+            self.__cur.execute(
+                f"SELECT * FROM work_record where post_code==:id", (id,))
+            res = self.__cur.fetchall()
+            print(len(res))
+            if res:
+                return res
+        except sqlite3.Error as e:
+            print("Ошибка получения из БД" + str(e))
+        return False
+
 
     def add_employee(self, name, surname, email, address, post_code, office_code):
         try:
